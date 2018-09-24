@@ -1,6 +1,6 @@
 # Eliiza Urban Forest Challenge
 
-Launch in Jupyter: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/talestonini/challenge-urban-forest/master?filepath=index.ipynb) 
+Launch in Jupyter: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/eliiza/challenge-urban-forest/master?filepath=index.ipynb) 
 
 ## Overview
 
