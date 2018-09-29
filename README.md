@@ -1,6 +1,8 @@
 # Eliiza Urban Forest Challenge
 
-Launch in Jupyter: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/eliiza/challenge-urban-forest/master?filepath=index.ipynb) 
+Launch in Jupyter with Scala Spark: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/eliiza/challenge-urban-forest/master?filepath=index-spark.ipynb) 
+Launch in Jupyter with PySpark: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/eliiza/challenge-urban-forest/master?filepath=index-pyspark.ipynb) 
+
 
 ## Overview
 
