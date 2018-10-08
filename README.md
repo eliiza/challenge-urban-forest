@@ -25,7 +25,7 @@ In *Scala*, the given types are defined like the following:
 
     type Point        = Seq[Double]
     type Loop         = Seq[Point]
-    type Polygon      = Seq[Loop]    // where the first loop is the outer shape and the following ones are holes
+    type Polygon      = Seq[Loop]  // where the first loop is the outer shape and the following ones are holes
     type MultiPolygon = Seq[Polygon]
 
 Four functions to process multi-polygons are provided:
