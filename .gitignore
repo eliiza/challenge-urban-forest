@@ -1,0 +1,5 @@
+.idea
+*.class
+*.cache
+jar/project/target
+.ipynb_*
