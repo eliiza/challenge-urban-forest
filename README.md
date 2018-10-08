@@ -55,10 +55,20 @@ Determine the greenest suburb of Melbourne.  Some relevant info:
 ## Where to solve the challenge
 
 As mentioned before, you can use a Jupyter notebook to solve the challenge.  A Docker image with Jupyter is provided for you, 
-and it contains kernels to program in Spark (Scala) and PySpark (Python).  Just clone this repository and run:
+and it contains kernels to program in Spark (Scala) and PySpark (Python).  Follow these steps to prepare your environment:
 
-    $ 
-    $
+    $ git clone https://github.com/eliiza/challenge-urban-forest.git myrepo
+    $ cd myrepo
+    $ docker build -t challenge .
+    $ docker run -p 8888:8888 challenge
+    
+Once the docker container is running, it should print a URL similar to this (the token will be different):
+
+    http://localhost:8888/?token=eab1d32b7f330f452c875467b367e4f109d39f97d647b9ac
+    
+which you should visit to find the Jupyter notebook.  From the file tree, select the notebook file corresponding to Spark 
+(index-spark.ipynb) or PySpark (index-pyspark.ipynb) conform your preference.  Once solved, send us back your notebook 
+file.  Good luck!!!
 
 #### Access and Licensing of the Datasets
 
