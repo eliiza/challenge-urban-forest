@@ -17,13 +17,15 @@ functions to help with processing polygons are also provided.
 Type **Polygon** is defined according to the GeoJson definition of polygons, *i.e.* a sequence of loops.  In a sequence of
 loops, the first loop (index zero) is the polygon's outer border (perimeter), while any following loop (if present) represents 
 holes within the outer border.  Type **Loop** is a sequence of points and **Point** is a sequence of 2 doubles.  There is yet 
-another type called **MultiPolygon**, which is simply a collection of type Polygon.  MultiPolygon's are very useful to 
-represent disjoint areas that make up a single piece of territory, for example, an island with the piece of coast to which it
-belongs.  In *Scala*, these types are:
+another type called **MultiPolygon**, which is simply a collection of polygons.  Multi-polygons are very useful to 
+represent disjoint areas that make up the abstraction of a single piece of territory, for example, an island with the piece of 
+coast to which it belongs.
+
+In *Scala*, the given types are defined like the following:
 
     type Point        = Seq[Double]
     type Loop         = Seq[Point]
-    type Polygon      = Seq[Loop]  // where the first loop is the outer shape and the following ones are holes
+    type Polygon      = Seq[Loop]    // where the first loop is the outer shape and the following ones are holes
     type MultiPolygon = Seq[Polygon]
 
 Four functions to process multi-polygons are provided:
@@ -42,7 +44,8 @@ Four functions to process multi-polygons are provided:
     //       if the return is true, the same is not guaranteed
     def mayIntersect(multiPolygonA: MultiPolygon, multiPolygonB: MultiPolygon): Boolean
 
-Equivalent functions are given in *Python* too!  You can check http://s2map.com to play around with plotting polygons.
+Equivalent functions are given in *Python* too!  You can check http://s2map.com to play around with plotting polygons on a 
+real map.
 
 ## Challenge
 
@@ -62,13 +65,13 @@ and it contains kernels to program in Spark (Scala) and PySpark (Python).  Follo
     $ docker build -t challenge .
     $ docker run -p 8888:8888 challenge
     
-Once the docker container is running, it should print a URL similar to this (the token will be different):
+Once the docker container is running, it should print to the console a URL similar to this (the token will be different):
 
     http://localhost:8888/?token=eab1d32b7f330f452c875467b367e4f109d39f97d647b9ac
     
 which you should visit to find the Jupyter notebook.  From the file tree, select the notebook file corresponding to Spark 
-(index-spark.ipynb) or PySpark (index-pyspark.ipynb) conform your preference.  Once solved, send us back your notebook 
-file.  Good luck!!!
+(index-spark.ipynb) or PySpark (index-pyspark.ipynb), according to your preferred language.  Once you solve the challenge, 
+send us back your notebook file.  Good luck!!!
 
 #### Access and Licensing of the Datasets
 
