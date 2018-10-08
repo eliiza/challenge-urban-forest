@@ -66,8 +66,9 @@ Once the docker container is running, it should print a URL similar to this (the
 
     http://localhost:8888/?token=eab1d32b7f330f452c875467b367e4f109d39f97d647b9ac
     
-which you should visit to find the Jupyter notebook. From the file tree, select the notebook file corresponding to Spark or 
-PySpark conform your preference. Good luck!!!
+which you should visit to find the Jupyter notebook.  From the file tree, select the notebook file corresponding to Spark 
+(index-spark.ipynb) or PySpark (index-pyspark.ipynb) conform your preference.  Once solved, send us back your notebook 
+file.  Good luck!!!
 
 #### Access and Licensing of the Datasets
 
