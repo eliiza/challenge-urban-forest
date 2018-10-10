@@ -25,7 +25,7 @@ In *Scala*, the given types are defined like the following:
 
     type Point        = Seq[Double]
     type Loop         = Seq[Point]
-    type Polygon      = Seq[Loop]  // where the first loop is the outer shape and the following ones are holes
+    type Polygon      = Seq[Loop]  // where the first loop is the outer border and the following ones are holes
     type MultiPolygon = Seq[Polygon]
 
 Four functions to process multi-polygons are provided:
@@ -41,11 +41,11 @@ Four functions to process multi-polygons are provided:
 
     // a cheap way to check whether 2 multi-polygons might intersect (based on their bounding boxes)
     // NOTE: if the return is false, the multi-polygons are GUARANTEED to NOT intersect; however,
-    //       if the return is true, the same is not guaranteed
+    //       if the return is true, the intersection is not guaranteed
     def mayIntersect(multiPolygonA: MultiPolygon, multiPolygonB: MultiPolygon): Boolean
 
 Equivalent functions are given in *Python* too!  You can check http://s2map.com to play around with plotting polygons on a 
-real map.
+real globe map.
 
 ## Challenge
 
