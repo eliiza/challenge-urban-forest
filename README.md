@@ -53,7 +53,7 @@ Determine the greenest suburb of Melbourne.  Some relevant info:
 - Suburbs are related to Statistical Areas Level 2 (SA2s).
 - File *melb_inner_2016.json* contains the Statistical Areas of inner Melbourne.
 - File *melb_urban_forest_2016.txt* contains the urban forest of the City of Melbourne council.
-- In **both** datasets, borders are given in multi-polygons and coordinates are **longitude/latitude** pairs.
+- In **both** datasets coordinates are **longitude/latitude** pairs.
 
 ## Where to solve the challenge
 
