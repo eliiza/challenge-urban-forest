@@ -73,7 +73,7 @@ which you should visit to find the Jupyter notebook.  From the file tree, select
 (index-spark.ipynb) or PySpark (index-pyspark.ipynb), according to your preferred language.  Once you solve the challenge, 
 send us back your notebook file.  Good luck!!!
 
-#### Access and Licensing of the Datasets
+#### Licensing of the Datasets
 
 - ASGS: https://link.fsdf.org.au/fsdf-dataset/australian-statistical-geographical-standard-boundaries
 - City of Melbourne: https://data.melbourne.vic.gov.au/about#principles
