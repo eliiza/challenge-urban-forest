@@ -10,16 +10,30 @@ the area occupied by tree canopies or bush.  In both cases, polygon vertices are
 More information about Statistical Areas can be found at the ASGS web site:
 http://www.abs.gov.au/websitedbs/D3310114.nsf/home/Australian+Statistical+Geography+Standard+(ASGS).
 
-For this challenge, you can use Spark (Scala) or PySpark (Python) in a Jupyter notebook.  Everything you need to perform this 
-challenge should be available, but feel free to install additional packages should you need them.  Some useful types and 
-functions to help with processing polygons are also provided.
+## Challenge
 
-Type **Polygon** is defined according to the GeoJson definition of polygons, *i.e.* a sequence of loops.  In a sequence of
-loops, the first loop (index zero) is the polygon's outer border (perimeter), while any following loop (if present) represents 
-holes within the outer border.  Type **Loop** is a sequence of points and **Point** is a sequence of 2 doubles.  There is yet 
-another type called **MultiPolygon**, which is simply a collection of polygons.  Multi-polygons are very useful to 
-represent disjoint areas that make up the abstraction of a single piece of territory, for example, an island with the piece of 
-coast to which it belongs.
+Determine the greenest suburb of Melbourne.
+
+Some relevant info:
+- Suburbs are related to Statistical Areas Level 2 (SA2s).
+- File *melb_inner_2016.json* contains the Statistical Areas of inner Melbourne.
+- Directory *melb_urban_forest_2016.txt* contains the urban forest of the City of Melbourne council.
+- In **both** datasets coordinates are **longitude/latitude** pairs.
+- You can check http://s2map.com to play around with plotting polygons on a real globe map.
+
+## How to solve the challenge
+
+For this challenge, you must use Spark (Scala) or PySpark (Python) in any environment you have access to.  We provide starting 
+Jupyter notebooks with Spark and PySpark kernels and a docker image to have Jupyter running locally.  Everything you need to 
+solve this challenge should be available there (more details ahead), but feel free to do it in any other Spark environment you 
+like and with your favourite IDE.
+
+Some useful types and functions to help with processing polygons are also provided.  Type **Polygon** is defined according to 
+the GeoJson definition of polygons, *i.e.* a sequence of loops.  In a sequence of loops, the first loop (index zero) is the 
+polygon's outer border (perimeter), while any following loop (if present) represents holes within the outer border.  Type 
+**Loop** is a sequence of points and **Point** is a sequence of 2 doubles.  There is yet another type called **MultiPolygon**, 
+which is simply a collection of polygons.  Multi-polygons are very useful to represent disjoint areas that make up the 
+abstraction of a single piece of territory, for example, an island with the piece of coast to which it belongs.
 
 In *Scala*, the given types are defined like the following:
 
@@ -44,18 +58,14 @@ Four functions to process multi-polygons are provided:
     //       if the return is true, the intersection is not guaranteed
     def mayIntersect(multiPolygonA: MultiPolygon, multiPolygonB: MultiPolygon): Boolean
 
-Equivalent functions are given in *Python* too!  You can check http://s2map.com to play around with plotting polygons on a 
-real globe map.
+If you're not using the Spark Jupyter notebook, you can use those types and functions by including
+**challenge-urban-forest-jar-assembly-0.0.1.jar** into your solution and importing everything from package 
+**au.com.eliiza.urbanforest**.
 
-## Challenge
+Equivalent functions are given in *Python* too!  If you're not using the PySpark Jupyter notebook, you can use those functions
+from file **polygon_utils.py**.
 
-Determine the greenest suburb of Melbourne.  Some relevant info:
-- Suburbs are related to Statistical Areas Level 2 (SA2s).
-- File *melb_inner_2016.json* contains the Statistical Areas of inner Melbourne.
-- File *melb_urban_forest_2016.txt* contains the urban forest of the City of Melbourne council.
-- In **both** datasets coordinates are **longitude/latitude** pairs.
-
-## Where to solve the challenge
+## Solving the challenge with provided dockerised Jupyter notebook
 
 As mentioned before, you can use a Jupyter notebook to solve the challenge.  A Docker image with Jupyter is provided for you, 
 and it contains kernels to program in Spark (Scala) and PySpark (Python).  Follow these steps to prepare your environment:
@@ -70,8 +80,8 @@ Once the docker container is running, it should print to the console a URL simil
     http://localhost:8888/?token=eab1d32b7f330f452c875467b367e4f109d39f97d647b9ac
     
 which you should visit to find the Jupyter notebook.  From the file tree, select the notebook file corresponding to Spark 
-(index-spark.ipynb) or PySpark (index-pyspark.ipynb), according to your preferred language.  Once you solve the challenge, 
-send us back your notebook file.  Good luck!!!
+(**index-spark.ipynb**) or PySpark (**index-pyspark.ipynb**), according to your preferred language.  Once you solve the 
+challenge, send us back your notebook file (or your code in any other format if not using Jupyter).  Good luck!!!
 
 #### Licensing of the Datasets
 
