@@ -25,8 +25,8 @@ Some relevant info:
 
 For this challenge, you must use Spark (Scala) or PySpark (Python) in any environment you have access to.  We provide starting 
 Jupyter notebooks with Spark and PySpark kernels and a docker image to have Jupyter running locally.  Everything you need to 
-solve this challenge should be available there (more details ahead), but feel free to do it in any other Spark environment you 
-like and with your favourite IDE.
+solve this challenge should be available there (more details ahead), _but feel free to do it in any other Spark environment 
+you like and with your favourite IDE_.
 
 Some useful types and functions to help with processing polygons are also provided.  Type **Polygon** is defined according to 
 the GeoJson definition of polygons, *i.e.* a sequence of loops.  In a sequence of loops, the first loop (index zero) is the 
