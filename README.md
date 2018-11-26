@@ -1,20 +1,21 @@
 # Eliiza Urban Forest Challenge
 
-## Overview
+## Intro
 
 In this challenge you're given data about some of Melbourne's **Statistical Areas** (as defined by the ASGS - Australian 
 Statistical Geography Standard) and about the City of Melbourne's **urban forest**.  Statistical Areas are given in the form 
 of polygons representing their borders.  The urban forest is given in the form of polygons too, where they represent 
-the area occupied by tree canopies or bush.  In both cases, polygon vertices are **longitude/latitude** pairs.
+the area occupied by tree canopies or bush.  In both cases, polygon vertices are longitude/latitude pairs.
 
 More information about Statistical Areas can be found at the ASGS web site:
 http://www.abs.gov.au/websitedbs/D3310114.nsf/home/Australian+Statistical+Geography+Standard+(ASGS).
 
 ## Challenge
 
-Determine the greenest suburb of Melbourne.
+The challenge consists in determining the greenest suburb of Melbourne, where greenest is the suburb with the highest 
+vegetation per area ratio.
 
-Some relevant info:
+Some relevant info here:
 - Suburbs are related to Statistical Areas Level 2 (SA2s).
 - File **melb_inner_2016.json** contains the Statistical Areas of inner Melbourne.
 - Directory **melb_urban_forest_2016.txt** contains the urban forest of the City of Melbourne council.
@@ -23,10 +24,10 @@ Some relevant info:
 
 ## How to solve the challenge
 
-For this challenge, you must use Spark (Scala) or PySpark (Python) in any environment you have access to.  We provide starting 
-Jupyter notebooks with Spark and PySpark kernels and a docker image to have Jupyter running locally.  Everything you need to 
-solve this challenge should be available there (more details ahead), but feel free to do it in any other Spark environment 
-you like and with your favourite IDE.
+For this challenge, **you must use Spark (Scala) or PySpark (Python)** in any environment you have access to.  We provide 
+starting Jupyter notebooks with Spark and PySpark kernels and a Docker image to have Jupyter running locally.  Everything you 
+need to solve this challenge should be available there (more details ahead), but feel free to solve it in any other Spark 
+environment you like or with your favourite IDE.
 
 Some useful types and functions to help with processing polygons are also provided.  Type **Polygon** is defined according to 
 the GeoJson definition of polygons, *i.e.* a sequence of loops.  In a sequence of loops, the first loop (index zero) is the 
@@ -75,7 +76,7 @@ and it contains kernels to program in Spark (Scala) and PySpark (Python).  Follo
     $ docker build -t challenge .
     $ docker run -p 8888:8888 challenge
     
-Once the docker container is running, it should print to the console a URL similar to this (the token will be different):
+Once the Docker container is running, it should print to the console a URL similar to this (the token will be different):
 
     http://localhost:8888/?token=eab1d32b7f330f452c875467b367e4f109d39f97d647b9ac
     
