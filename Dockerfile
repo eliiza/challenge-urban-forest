@@ -2,6 +2,8 @@ FROM jupyter/all-spark-notebook
 
 USER root
 
+RUN sudo apt-get update 
+RUN sudo apt-get install -y libgeos-dev
 RUN pip install Shapely==1.6.4.post2
 RUN pip install pyspark==2.3.1
 
