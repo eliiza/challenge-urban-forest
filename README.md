@@ -82,7 +82,9 @@ Once the Docker container is running, it should print to the console a URL simil
     
 which you should visit to find the Jupyter notebook.  From the file tree, select the notebook file corresponding to Spark 
 (**index-spark.ipynb**) or PySpark (**index-pyspark.ipynb**), according to your preferred language.  Once you solve the 
-challenge, send us back your notebook file (or your code in any other format if not using Jupyter).  Good luck!!!
+challenge, send us back your notebook file (or your code in any other format if not using Jupyter).
+
+Good luck!!!
 
 #### Licensing of the Datasets
 
