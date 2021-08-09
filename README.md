@@ -89,4 +89,4 @@ Good luck!!!
 #### Licensing of the Datasets
 
 - ASGS: https://link.fsdf.org.au/fsdf-dataset/australian-statistical-geographical-standard-boundaries
-- City of Melbourne: https://data.melbourne.vic.gov.au/about#principles
+- City of Melbourne: https://data.melbourne.vic.gov.au/stories/s/data-principles/9f8u-v2fn?src=hdr
