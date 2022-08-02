@@ -17,21 +17,24 @@ object j {
     def getSeq(): JList[T]
   }
 
-  case class Point(coords: JList[Double]) extends Sequentiable[Double] {
+  class Point(coords: JList[Double]) extends Sequentiable[Double] {
     def getSeq(): JList[Double] = coords
+    def getCoordinates() = getSeq()
   }
 
-  case class Loop(points: JList[Point]) extends Sequentiable[Point] {
+  class Loop(points: JList[Point]) extends Sequentiable[Point] {
     def getSeq(): JList[Point] = points
+    def getPoints() = getSeq()
   }
 
-  case class Polygon(loops: JList[Loop]) extends Sequentiable[Loop] {
+  class Polygon(loops: JList[Loop]) extends Sequentiable[Loop] {
     def getSeq(): JList[Loop] = loops
+    def getLoops() = getSeq()
   }
 
-  case class MultiPolygon(polygons: JList[Polygon])
-      extends Sequentiable[Polygon] {
+  class MultiPolygon(polygons: JList[Polygon]) extends Sequentiable[Polygon] {
     def getSeq(): JList[Polygon] = polygons
+    def getPolygons() = getSeq()
   }
 
   def mergeMultiPolygons(multiPolygons: MultiPolygon*): MultiPolygon = {
@@ -67,19 +70,19 @@ object j {
     for (jCoord <- jPoint.getSeq) yield jCoord
 
   private def sPointToJPoint(sPoint: SPoint): Point =
-    Point((for (sCoord <- sPoint) yield sCoord).toList)
+    new Point((for (sCoord <- sPoint) yield sCoord).toList)
 
   private def jLoopToSLoop(jLoop: Loop): SLoop =
     for (jPoint <- jLoop.getSeq) yield jPointToSPoint(jPoint)
 
   private def sLoopToJLoop(sLoop: SLoop): Loop =
-    Loop(for (sPoint <- sLoop) yield sPointToJPoint(sPoint))
+    new Loop(for (sPoint <- sLoop) yield sPointToJPoint(sPoint))
 
   private def jPolygonToSPolygon(jPolygon: Polygon): SPolygon =
     for (jLoop <- jPolygon.getSeq) yield jLoopToSLoop(jLoop)
 
   private def sPolygonToJPolygon(sPolygon: SPolygon): Polygon =
-    Polygon(for (sLoop <- sPolygon) yield sLoopToJLoop(sLoop))
+    new Polygon(for (sLoop <- sPolygon) yield sLoopToJLoop(sLoop))
 
   private def jMultiPolygonToSMultiPolygon(
       jMultiPolygon: MultiPolygon
@@ -89,7 +92,7 @@ object j {
   private def sMultiPolygonToJMultiPolygon(
       sMultiPolygon: SMultiPolygon
   ): MultiPolygon =
-    MultiPolygon(
+    new MultiPolygon(
       for (sPolygon <- sMultiPolygon) yield sPolygonToJPolygon(sPolygon)
     )
 
