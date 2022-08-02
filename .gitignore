@@ -1,5 +1,15 @@
+.bloop
+.metals
 .idea
 *.class
 *.cache
+jar/project/project
 jar/project/target
+jar/project/project/target
+jar/target
+jar/.bloop
+jar/.metals
 .ipynb_*
+.DS_Store
+metastore_db
+derby.log
