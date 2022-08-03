@@ -8,6 +8,7 @@ import au.com.eliiza.urbanforest.{mergeMultiPolygons => sMergeMultiPolygons}
 import au.com.eliiza.urbanforest.{mayIntersect => sMayIntersect}
 import au.com.eliiza.urbanforest.{multiPolygonArea => sMultiPolygonArea}
 import au.com.eliiza.urbanforest.{intersectionArea => sIntersectionArea}
+import java.lang.{Double => JDouble}
 import java.util.{List => JList}
 import scala.collection.JavaConversions._
 
@@ -17,8 +18,8 @@ object j {
     def getSeq(): JList[T]
   }
 
-  class Point(coords: JList[Double]) extends Sequentiable[Double] {
-    def getSeq(): JList[Double] = coords
+  class Point(coords: JList[JDouble]) extends Sequentiable[JDouble] {
+    def getSeq(): JList[JDouble] = coords
     def getCoordinates() = getSeq()
   }
 
@@ -67,10 +68,10 @@ object j {
     )
 
   private def jPointToSPoint(jPoint: Point): SPoint =
-    for (jCoord <- jPoint.getSeq) yield jCoord
+    for (jCoord <- jPoint.getSeq.map(d => d.asInstanceOf[Double])) yield jCoord
 
   private def sPointToJPoint(sPoint: SPoint): Point =
-    new Point((for (sCoord <- sPoint) yield sCoord).toList)
+    new Point((for (sCoord <- sPoint) yield JDouble.valueOf(sCoord)).toList)
 
   private def jLoopToSLoop(jLoop: Loop): SLoop =
     for (jPoint <- jLoop.getSeq) yield jPointToSPoint(jPoint)
