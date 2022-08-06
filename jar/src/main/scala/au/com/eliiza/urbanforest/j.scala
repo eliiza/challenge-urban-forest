@@ -14,7 +14,7 @@ import scala.collection.JavaConversions._
 
 object j {
 
-  sealed trait Sequentiable[T] {
+  sealed trait Sequentiable[T] extends java.io.Serializable {
     def getSeq(): JList[T]
   }
 
@@ -38,11 +38,14 @@ object j {
     def getPolygons() = getSeq()
   }
 
-  def mergeMultiPolygons(multiPolygons: MultiPolygon*): MultiPolygon = {
-    val sMultiPolygons: Seq[SMultiPolygon] =
-      for (jMultiPolygon <- multiPolygons)
-        yield jMultiPolygonToSMultiPolygon(jMultiPolygon)
-    val merge = sMergeMultiPolygons(sMultiPolygons: _*)
+  def mergeMultiPolygons(
+      multiPolygonA: MultiPolygon,
+      multiPolygonB: MultiPolygon
+  ): MultiPolygon = {
+    val merge = sMergeMultiPolygons(
+      jMultiPolygonToSMultiPolygon(multiPolygonA),
+      jMultiPolygonToSMultiPolygon(multiPolygonB)
+    )
     sMultiPolygonToJMultiPolygon(merge)
   }
 
