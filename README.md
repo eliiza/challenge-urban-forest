@@ -25,9 +25,9 @@ the drop-down options). This is another good one for that: http://apps.headwallp
 
 ## How to solve the challenge
 
-For this challenge, **you will most probably want to use Spark/PySpark or Beam/Dataflow)**, as they provide the adequate
-parallel processing you'll need to get results in a reasonable amount of time.  You can choose any language or
-environment you have access to.
+For this challenge, **you will most probably want to use [Spark/PySpark](https://spark.apache.org/) or
+[Beam/Dataflow](https://beam.apache.org/)**, as they provide the adequate parallel processing you'll need to get results
+in a reasonable amount of time.  You can choose any language or environment you have access to.
 
 Some useful types and functions to help with processing polygons are also provided.  Type **Polygon** is defined
 according to the GeoJson definition of polygons, *i.e.* a sequence of loops.  In a sequence of loops, the first loop
