@@ -1,11 +1,10 @@
 name := "challenge-urban-forest-jar"
-
-version := "0.0.2"
-
-scalaVersion := "2.11.12"
+version := "1.0.0"
+scalaVersion := "2.13.8"
 
 libraryDependencies ++= Seq(
-  "com.google.common.geometry" % "s2-geometry-java" % "0.0.1" from "file://./lib/s2-geometry-java-0.0.1.jar"
+  "io.sgr" % "s2-geometry-library-java" % "1.0.1"
 )
 
-assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
+assembly / assemblyOption := (assembly / assemblyOption).value
+  .copy(includeScala = false)

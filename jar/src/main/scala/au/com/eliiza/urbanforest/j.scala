@@ -10,7 +10,7 @@ import au.com.eliiza.urbanforest.{multiPolygonArea => sMultiPolygonArea}
 import au.com.eliiza.urbanforest.{intersectionArea => sIntersectionArea}
 import java.lang.{Double => JDouble}
 import java.util.{List => JList}
-import scala.collection.JavaConversions._
+import scala.jdk.CollectionConverters._
 
 object j {
 
@@ -21,21 +21,33 @@ object j {
   class Point(coords: JList[JDouble]) extends Sequentiable[JDouble] {
     def getSeq(): JList[JDouble] = coords
     def getCoordinates() = getSeq()
+
+    override def equals(p: Any): Boolean =
+      getSeq().containsAll(p.asInstanceOf[Point].getSeq())
   }
 
   class Loop(points: JList[Point]) extends Sequentiable[Point] {
     def getSeq(): JList[Point] = points
     def getPoints() = getSeq()
+
+    override def equals(p: Any): Boolean =
+      getSeq().containsAll(p.asInstanceOf[Loop].getSeq())
   }
 
   class Polygon(loops: JList[Loop]) extends Sequentiable[Loop] {
     def getSeq(): JList[Loop] = loops
     def getLoops() = getSeq()
+
+    override def equals(p: Any): Boolean =
+      getSeq().containsAll(p.asInstanceOf[Polygon].getSeq())
   }
 
   class MultiPolygon(polygons: JList[Polygon]) extends Sequentiable[Polygon] {
     def getSeq(): JList[Polygon] = polygons
     def getPolygons() = getSeq()
+
+    override def equals(p: Any): Boolean =
+      getSeq().containsAll(p.asInstanceOf[MultiPolygon].getSeq())
   }
 
   def mergeMultiPolygons(
@@ -71,33 +83,40 @@ object j {
     )
 
   private def jPointToSPoint(jPoint: Point): SPoint =
-    for (jCoord <- jPoint.getSeq.map(d => d.asInstanceOf[Double])) yield jCoord
+    for (jCoord <- jPoint.getSeq.asScala.toSeq.map(d => d.asInstanceOf[Double]))
+      yield jCoord
 
   private def sPointToJPoint(sPoint: SPoint): Point =
-    new Point((for (sCoord <- sPoint) yield JDouble.valueOf(sCoord)).toList)
+    new Point(
+      (for (sCoord <- sPoint) yield JDouble.valueOf(sCoord)).toList.asJava
+    )
 
   private def jLoopToSLoop(jLoop: Loop): SLoop =
-    for (jPoint <- jLoop.getSeq) yield jPointToSPoint(jPoint)
+    for (jPoint <- jLoop.getSeq.asScala.toSeq) yield jPointToSPoint(jPoint)
 
   private def sLoopToJLoop(sLoop: SLoop): Loop =
-    new Loop(for (sPoint <- sLoop) yield sPointToJPoint(sPoint))
+    new Loop((for (sPoint <- sLoop) yield sPointToJPoint(sPoint)).toList.asJava)
 
   private def jPolygonToSPolygon(jPolygon: Polygon): SPolygon =
-    for (jLoop <- jPolygon.getSeq) yield jLoopToSLoop(jLoop)
+    for (jLoop <- jPolygon.getSeq.asScala.toSeq) yield jLoopToSLoop(jLoop)
 
   private def sPolygonToJPolygon(sPolygon: SPolygon): Polygon =
-    new Polygon(for (sLoop <- sPolygon) yield sLoopToJLoop(sLoop))
+    new Polygon(
+      (for (sLoop <- sPolygon) yield sLoopToJLoop(sLoop)).toList.asJava
+    )
 
   private def jMultiPolygonToSMultiPolygon(
       jMultiPolygon: MultiPolygon
   ): SMultiPolygon =
-    for (jPolygon <- jMultiPolygon.getSeq) yield jPolygonToSPolygon(jPolygon)
+    for (jPolygon <- jMultiPolygon.getSeq.asScala.toSeq)
+      yield jPolygonToSPolygon(jPolygon)
 
   private def sMultiPolygonToJMultiPolygon(
       sMultiPolygon: SMultiPolygon
   ): MultiPolygon =
     new MultiPolygon(
-      for (sPolygon <- sMultiPolygon) yield sPolygonToJPolygon(sPolygon)
+      (for (sPolygon <- sMultiPolygon)
+        yield sPolygonToJPolygon(sPolygon)).toList.asJava
     )
 
 }

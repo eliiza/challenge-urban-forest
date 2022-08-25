@@ -9,6 +9,7 @@ jar/project/project/target
 jar/target
 jar/.bloop
 jar/.metals
+jar/.bsp
 .ipynb_*
 .DS_Store
 metastore_db
